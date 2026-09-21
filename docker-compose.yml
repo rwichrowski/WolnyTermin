@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: wolnytermin-postgres
+    environment:
+      POSTGRES_DB: wolnytermin
+      POSTGRES_USER: wolnytermin
+      POSTGRES_PASSWORD: wolnytermin
+      TZ: Europe/Warsaw
+    ports:
+      - "5432:5432"
+    volumes:
+      - wolnytermin-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wolnytermin -d wolnytermin"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  wolnytermin-pgdata:
