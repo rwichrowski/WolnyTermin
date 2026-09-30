@@ -37,6 +37,11 @@ management:
     health:
       show-details: when-authorized
 
+wolnytermin:
+  status-stream:
+    # Co ile /api/status/stream wysyla kolejne zdarzenie (format: 5s, 500ms, 1m).
+    interval: 5s
+
 logging:
   level:
     pl.wolnytermin: DEBUG

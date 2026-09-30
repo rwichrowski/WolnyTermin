@@ -34,6 +34,16 @@ System rezerwacji terminów online. Założenia produktowe i architektoniczne: [
    curl http://localhost:8080/actuator/health
    ```
 
+   Strumień statusu (Server-Sent Events, zdarzenie `status` co 5 s — interwał w
+   `wolnytermin.status-stream.interval`):
+
+   ```bash
+   curl.exe -N http://localhost:8080/api/status/stream
+   ```
+
+   W PowerShellu trzeba pisać `curl.exe`, bo samo `curl` to alias `Invoke-WebRequest`,
+   który nie pokazuje strumienia na bieżąco. `-N` wyłącza buforowanie.
+
 Konfigurację bazy można nadpisać zmiennymi `DB_URL`, `DB_USER`, `DB_PASSWORD`.
 
 ## Testy
